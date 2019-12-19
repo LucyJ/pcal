@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Recommendations
+{% endblock %}
+
+{% block word %}
+    Recommendations
+{% endblock %}
+
+{% block main %}
+    <h3 class = "center">Your recommendation for stress:</h3>
+    <p>{{ stress }}</p>
+    <h3 class = "center">Your recommendation for pain:</h3>
+    <p>{{ pain }}</p>
+    <h3 class = "center">Your recommendation for energy:</h3>
+    <p>{{ energy }}</p>
+    <h3 class = "center">Your recommendation for bleeding:</h3>
+    <p>{{ bleeding }}</p>
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Register
+{% endblock %}
+
+{% block main %}
+    <form action="/register" method="post">
+        <div class="bg-image2">
+            <div class="container">
+                <div class="row">
+                  <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+                    <div class="card card-signin my-5">
+                      <div class="card">
+                        <h5 class="card-title text-center padded">Register</h5>
+                        <form class="form-signin">
+                            <div class="form-group">
+                                <input autocomplete="off" autofocus class="form-control" name="username" placeholder="Username" type="text">
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control" name="password" placeholder="Password" type="password">
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control" name="confirmation" placeholder="Confirm Password" type="password">
+                            </div>
+                            <div class="form-group">
+                                <input autocomplete="off" autofocus class="form-control" name="cycle_length" placeholder="Cycle Length" type="number" min=1 max=50>
+                            </div>
+                            <!-- this script is from https://jqueryui.com/datepicker/#default --->
+                            <script>
+                                $( function() {
+                                    $( "#datepicker" ).datepicker();
+                                    $( "#format" ).on( "change", function() {
+                                        $( "#datepicker" ).datepicker( "option", "dateFormat", "yy-mm-dd" );
+                                    });
+                                } );
+                            </script>
+                            <input type="text" id="datepicker" placeholder="Last Cycle Start Date" class="form-control center" name="last_cycle_start"></p>
+                            <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit">Register</button>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+    </form>
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Symptoms
+{% endblock %}
+
+{% block word %}
+    Symptoms
+{% endblock %}
+
+{% block main %}
+    <form action="/symptoms" method="post">
+        <div class="form-group">
+            <input autocomplete="off" autofocus class="form-control" name="stress" placeholder="Stress Level (1-4)" type="number" min=1 max=4>
+        </div>
+        <div class="form-group">
+            <input class="form-control" name="pain" placeholder="Pain level (1-4)" type="number" min=1 max=4>
+        </div>
+        <div class="form-group">
+            <input class="form-control" name="energy" placeholder="Energy level (1-4)" type="number" min=1 max=4>
+        </div>
+        <div class="form-group">
+            <input class="form-control" name="emotion" placeholder="Emotion(s)" type="text">
+        </div>
+        <div class="form-group">
+            <input class="form-control" name="notes" placeholder="Additional Notes" type="text">
+        </div>
+        <div class="form-group">
+            <select class="form-control" name="bleeding_level" placeholder="Bleeding Level">
+                <option disabled selected>Flow Level</option>
+                    <option>None</option>
+                    <option>Light</option>
+                    <option>Medium</option>
+                    <option>Heavy</option>
+                    <option>Spotting</option>
+            </select>
+        </div>
+        <button class="btn btn-primary" type="submit">Submit</button>
+    </form>
+{% endblock %}

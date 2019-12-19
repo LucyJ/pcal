@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Today
+{% endblock %}
+
+{% block word %}
+    Today
+{% endblock %}
+
+{% block main %}
+    <audio controls autoplay src="static/Blueming.mp3" controls></audio>
+    <div class="container bg-light text-dark top-pad bottom-pad">
+        {% if late %}
+            <h1 class = "center">Your cycle<h1>
+            <h1 class = "center">is late by<h1>
+            <p class = "center"> {{ next_cycle }} </p>
+            <h1 class = "center"> days. </h1>
+        {% else %}
+            <h1 class = "center">Your next cycle<h1>
+            <h1 class = "center">starts in<h1>
+            <p class = "center"> {{ next_cycle }} </p>
+            <h1 class = "center"> days. </h1>
+        {% endif %}
+
+        <h1 class = "center padded">Your next ovuation<h1>
+        <h1 class = "center">begins in<h1>
+        <p class = "center"> {{ ovulation }} </p>
+        <h1 class = "center"> days. </h1>
+    </div>
+
+    <div class="container-fluid bg-image3 text-center bottom-pad">
+        <h1 class="top-pad bottom-pad white">How are you feeling today?</h1>
+            {% for symptom in symptoms %}
+                <p class="white">Stress Level: {{ symptom.stress }}</p>
+                <p class="white">Pain Level: {{ symptom.pain }}</p>
+                <p class="white">Energy Level: {{ symptom.energy }}</p>
+                <p class="white">Emotion(s): {{ symptom.emotion }}</p>
+                <p class="white">Notes: {{ symptom.notes }}</p>
+                <p class="white">Flow Level: {{ symptom.bleeding_level }}</p>
+            {% endfor %}
+        <a href="/symptoms" class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" role="button">Add Symptoms</a>
+    </div>
+
+{% endblock %}

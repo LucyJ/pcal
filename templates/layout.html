@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- documentation at http://getbootstrap.com/docs/4.1/, alternative themes at https://bootswatch.com/ -->
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
+
+        <!--  -->
+        <link href="/static/logo.ico" rel="icon">
+
+        <link href="/static/styles.css" rel="stylesheet">
+
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <link rel="stylesheet" href="/resources/demos/style.css">
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+
+        <title>pCal: {% block title %}{% endblock %}</title>
+    </head>
+
+    <body class="bg-light text-white">
+        <div class="jumbotron jumbotron-fluid bg-danger">
+                <h1 class="center login-heading">PCal</h1>
+                <i class="center login-heading">your period pal</i>
+                <img src="static/pcal_logo.png" alt="Logo" class="center width20">
+                <h2 class="center opacity75 padded">{% block word %}{% endblock %}</h2>
+        </div>
+        <nav class="navbar navbar-expand-md">
+            <button aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#navbar" data-toggle="collapse" type="button">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbar">
+                {% if session.user_id %}
+                    <ul class="navbar-nav mr-auto mt-2">
+                        <li class="nav-item"><a class="nav-link login-heading" href="/">Today</a></li>
+                        <li class="nav-item"><a class="nav-link login-heading" href="/calendar">Calendar</a></li>
+                        <li class="nav-item"><a class="nav-link login-heading" href="/recommendations">Recommendations</a></li>
+                    </ul>
+                    <ul class="navbar-nav ml-auto mt-2">
+                        <li class="nav-item"><a class="nav-link login-heading" href="/logout">Log Out</a></li>
+                    </ul>
+                {% else %}
+                    <ul class="navbar-nav ml-auto mt-2">
+                        <li class="nav-item"><a class="nav-link login-heading" href="/register">Register</a></li>
+                        <li class="nav-item"><a class="nav-link login-heading" href="/login">Log In</a></li>
+                    </ul>
+                {% endif %}
+            </div>
+        </nav>
+
+        {% if get_flashed_messages() %}
+            <header>
+                <div class="alert alert-primary border text-center" role="alert">
+                    {{ get_flashed_messages() | join(" ") }}
+                </div>
+            </header>
+        {% endif %}
+
+        <main class="container p-3 bg-light text-dark">
+            {% block main %}{% endblock %}
+        </main>
+
+    <footer class="page-footer font-small bg-danger padded">
+        <!-- Authorship -->
+        <div class="footer-copyright text-center py-3">
+            <p>PCal by: Vineet Gangireddy, Lucy Jiao, and Karina Wang</p>
+            <p>Disclaimer: We are not real doctors and any advice from PCal should not be taken as real medical advice.
+                If you need medical help, please consult your physician.</p>
+        </div>
+    </footer>
+
+    </body>
+
+</html>

@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Calendar
+{% endblock %}
+
+{% block word %}
+    Calendar
+{% endblock %}
+
+{% block main %}
+    <div class="container bg-light text-dark top-pad">
+        <h1>Enter a date to see any symptoms you recorded:</h1>
+    </div>
+
+    <form action="/calendar" method="post">
+        <!-- this script is from https://jqueryui.com/datepicker/#default --->
+        <script>
+            $( function() {
+                $( "#datepicker" ).datepicker();
+                $( "#format" ).on( "change", function() {
+                    $( "#datepicker" ).datepicker( "option", "dateFormat", "yy-mm-dd" );
+                });
+            } );
+        </script>
+        <input type="text" id="datepicker" placeholder="Date" class="form-control center" name="date"></p>
+        <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit">Retrieve Data</button>
+    </form>
+
+    {% if symptoms %}
+        <div class="container-fluid bg-primary text-center bottom-pad">
+            <h1 class="top-pad bottom-pad white">Symptoms for {{ date }}</h1>
+                {% for symptom in symptoms %}
+                    <p class="white">Stress Level: {{ symptom.stress }}</p>
+                    <p class="white">Pain Level: {{ symptom.pain }}</p>
+                    <p class="white">Energy Level: {{ symptom.energy }}</p>
+                    <p class="white">Emotion(s): {{ symptom.emotion }}</p>
+                    <p class="white">Notes: {{ symptom.notes }}</p>
+                    <p class="white">Flow Level: {{ symptom.bleeding_level }}</p>
+                {% endfor %}
+        </div>
+    {% endif %}
+{% endblock %}
